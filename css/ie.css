@@ -1,0 +1,64 @@
+.interview_experiences{
+    position: absolute;
+    top:20%;
+    left:10%;
+    right:10%;
+    display:flex;
+    justify-content: space-between;
+    gap:15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.inteview_experience_card{
+    height: 500px;
+    margin-bottom: 10px;
+    width:330px;
+    background-image: linear-gradient(to right top, #d5e3f4, #b2ccfa, #9cb3fd, #9496fa, #9a74f0);
+    border-radius: 12px ;
+    display: flex;
+    flex-direction: column;
+    gap:10px;   
+}
+h3{
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    padding: 8px;
+    font-size: 22px;
+    color: #002db3
+}
+.image__container{
+    height: 150px;
+    width:150px;
+    text-align:center;
+    margin:1px auto
+}
+.brand{
+    height: 100%;
+    width:100%;
+}
+.text__info{
+    font-family: 'cursive';
+    font-size: 20px;
+    text-align:center;
+    padding: 3px 5px;
+    color:rgb(24, 24, 240);
+    font-weight:300;
+    margin-top: 4px;
+}
+.read__more__button{
+    padding:10px;
+    background-color: #0c88ed;
+    width: 130px;
+    margin:auto;
+    font-size:14px;
+    border-radius: 12px;
+    box-shadow: 7px 3px 4px #3485ee;
+}
+.read__more__button a{
+    text-decoration: none;
+    font-weight: 800;
+    color:white;
+    font-family: 'Lobster', cursive;
+    font-size:16px  
+}
