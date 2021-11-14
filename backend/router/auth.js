@@ -1,25 +1,26 @@
-export const addUser = async (request, response) => {
+const router = require('express').Router();
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+
+router.post("/login", async (request, response) => {
     try {
-        let exist = await User.findOne({ googleId: request.body.googleId });
+        let token;
+        const exist = await User.findOne({ googleId: request.body.googleId });
 
         if(exist) {
-            response.status(200).json('user already exists');
+             token = jwt.sign(exist._id,process.env.JWT_SECRET);
+            response.status(201).json({user:exist,token});
             return;
         }
 
         const newUser = new User(request.body);
-        await newUser.save();
-        response.status(200).json(newUser);
+        await newUser.save().then((s)=>{
+        token = jwt.sign(s._id,process.env.JWT_SECRET)     
+        response.status(201).json({user:s,token});
+    });
     } catch (error) {
         response.status(500).json(error);
     }
-}
+});
 
-export const getUser = async (request, response) => {
-    try {
-        const user = await User.find({});
-        response.status(200).json(user);
-    } catch (error) {
-        response.status(500).json(error);
-    }
-}
+module.exports = router;

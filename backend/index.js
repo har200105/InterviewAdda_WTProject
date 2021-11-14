@@ -8,7 +8,9 @@ app.use(express.json());
 const db = require('./database/db');
 db();
 app.use("/",require('./router/questions'));
+app.use("/",require('./router/auth'));
 
-app.listen(5000,()=>{
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,()=>{
     console.log("Server is Listening");
 });
