@@ -1,0 +1,17 @@
+.login_header{
+    color: whitesmoke;
+}
+
+.login_box{
+    /* margin: auto;    */
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.google_login{
+    margin-top: 10px;
+    
+}

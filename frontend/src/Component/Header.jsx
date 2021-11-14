@@ -1,17 +1,23 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Header = () => {
     return (
         <>
+        <Link to="/">
             <h1 class="heading">Interview Adda</h1>
+        </Link>     
             <nav class="navMenu">
-                <a href="#">Home</a>
-                <a href="./opportunity.html">Opportunities</a>
-                <a href="./IE.html">Experiences Corner</a>
-                <a href="./IE.html">Add a Question</a>
+                <Link to="/">Home</Link>
+                <Link to="/opportunities">Opportunities</Link>
+                <Link to="/interviewexp">Experiences Corner</Link>
+                <Link to="/addaQues">Add a Question</Link>
+                <Link to="/addaQues">Login</Link>
+                <Link to="/addaQues">Logout</Link>
             </nav>
         </>
     )
 }
 
 export default Header
+
