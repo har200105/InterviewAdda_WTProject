@@ -1,187 +1,117 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Component/Header';
 import '../styles/Home.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSomeQuestions } from '../redux/actions/questionAction';
+import { Link } from 'react-router-dom';
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import 'react-circular-progressbar/dist/styles.css';
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+  const questionState = useSelector(state => state.getSomeQuestionsReducer);
+  const { loading, questions, error } = questionState;
+
+  useEffect(() => {
+    dispatch(getSomeQuestions());
+  }, [dispatch]);
+
   return (
     <>
+
       <Header />
       <div class="parent">
         <div class="left-container">
           <div class="item">
-            <a href="#">
-              Goldman Sachs Questions
-            </a>
+            <Link to={`/getComp/GoldmanSachs`}>
+              GoldmanSachs Questions
+            </Link>
           </div>
 
+
           <div class="item">
-            <a>
+            <Link to={`/getComp/Microsoft`}>
               Microsoft Questions
-            </a>
+            </Link>
           </div>
 
 
           <div class="item">
-            <a>
-              Facebook Questions
-            </a>
-          </div>
-
-
-          <div class="item">
-            <a>
+            <Link to={`/getComp/Amazon`}>
               Amazon Questions
-            </a>
+            </Link>
+          </div>
+
+
+          <div class="item">
+            <Link to={`/getComp/Meta`}>
+              Meta Questions
+            </Link>
           </div>
 
           <div class="item">
-            <a>
+            <Link to={`/getComp/Google`}>
               Google Questions
-            </a>
+            </Link>
           </div>
 
           <div class="item">
-            <a>
-              TCS Questions
-            </a>
+            <Link to={`/getComp/MorganStanley`}>
+              MorganStanley Questions
+            </Link>
           </div>
 
           <div class="item">
-            <a>
-              Wipro Questions
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              Morgan Stanley Questions
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              Browser Stack Questions
-            </a>
-          </div>
-
-          <div class="item">
-            <a>
-              Intuit Questions
-            </a>
+            <Link to={`/getComp/BrowserStack`}>
+              BrowserStack Questions
+            </Link>
           </div>
 
         </div>
         <div class="right-container">
           <img src="/assets/bg.png" height="500px" width="95%" alt="" />
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
-                Find the Maximum XOR of an Array
-              </span>
-              <a href="https://www.geeksforgeeks.org/find-the-maximum-subarray-xor-in-a-given-array/" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-              <div class="companies_list">
-                <p>Google</p>
-                <p>Amazon</p>
-                <p>Browser Stack</p>
-                <p>Goldman Sachs</p>
+
+          {loading && <div style={{ width: 40, height: 40, margin: 'auto' }}>
+            <CircularProgressbar
+              styles={buildStyles({
+                pathColor: 'white', pathTransitionDuration: 0.5
+              })}
+            />
+          </div>}
+
+          {questions && questions.map((q) => (
+
+
+            <div class="list_top_questions">
+              <div class="questions_box">
+                <span class="question">
+                  {q.Question}
+                </span>
+
+                <a href={q.QuestionLink} target="__">
+                  <button class="solve_button">Solve</button>
+                </a>
+
+                <div class="companies_list">
+                  {q.Companies.map((c) => (
+                    <p>{c}</p>
+                  ))}
+                </div>
+
+                {
+                  q.isContributed &&
+                  <div class="contributor__details">
+                    <p>Contributed By : {q.addedBy.name}</p>
+                  </div>
+                }
+
+
               </div>
-
             </div>
-          </div>
+          ))}
 
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
 
-                Container With Maximum Water
-              </span>
-
-              <a href="https://www.geeksforgeeks.org/container-with-most-water/" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-
-              <div class="companies_list">
-                <p>Morgan Stanley</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
-                Implement LRU Cache
-              </span>
-
-              <a href="https://www.geeksforgeeks.org/lru-cache-implementation/" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-
-              <div class="companies_list">
-                <p>Google</p>
-                <p>Amazon</p>
-                <p>Browser Stack</p>
-                <p>Goldman Sachs</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
-                Implement LFU Cache
-              </span>
-
-              <a href="https://leetcode.com/problems/lfu-cache/" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-
-              <div class="companies_list">
-
-                <p>Amazon</p>
-                <p>Browser Stack</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
-                Maximum XOR of an Array using Trie Data Structure
-              </span>
-              <a href="https://www.geeksforgeeks.org/find-the-maximum-subarray-xor-in-a-given-array/" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-
-              <div class="companies_list">
-                <p>Google</p>
-                <p>Amazon</p>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="list_top_questions">
-            <div class="questions_box">
-              <span class="question">
-
-                Find the Top View of a Binary Tree
-
-              </span>
-              <a href="https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1" target="__">
-                <button class="solve_button">Solve</button>
-              </a>
-              <div class="companies_list">
-                <p>Google</p>
-                <p>Microsoft</p>
-              </div>
-
-            </div>
-          </div>
         </div>
 
       </div>

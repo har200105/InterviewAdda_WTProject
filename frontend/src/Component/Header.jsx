@@ -2,6 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const Header = () => {
+    const logout=()=>{
+        localStorage.removeItem("jwt");
+        window.location.reload();
+    }
     return (
         <>
         <Link to="/">
@@ -12,8 +16,13 @@ const Header = () => {
                 <Link to="/opportunities">Opportunities</Link>
                 <Link to="/interviewexp">Experiences Corner</Link>
                 <Link to="/addaQues">Add a Question</Link>
-                <Link to="/addaQues">Login</Link>
-                <Link to="/addaQues">Logout</Link>
+             {
+             localStorage.getItem("jwt") === null ? 
+               <Link to="/Login">Login</Link> : <a onClick={logout} className="logout">
+                   Logout
+               </a>
+             }
+                {/* <Link to="/addaQues">Logout</Link> */}
             </nav>
         </>
     )

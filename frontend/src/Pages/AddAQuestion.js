@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Component/Header';
 import '../styles/Aaq.css';
 import axios  from 'axios';
 import { quesAPI } from '../API';
+import { useNavigate } from 'react-router';
 
 const questionDataSchema={
     Question:"",
@@ -12,6 +13,12 @@ const questionDataSchema={
 
 const AddAQuestion = () => {
 
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        localStorage.getItem("jwt") === null && navigate("/Login") 
+    },[])
+
     const[initialState,setState] = useState(questionDataSchema);
 
     const inputHandler = (e)=>{
@@ -19,13 +26,23 @@ const AddAQuestion = () => {
     }
 
     const addQuestion = async() =>{
-        await axios.post(`${quesAPI}/addQuestions`,{
-            
+
+      const addQues =  await axios.post(`${quesAPI}/addQuestions`,{
+            QuestionLink:initialState.link,
+            Companies:initialState.company.split(","),
+            Question:initialState.Question,
+            isContributed:true
         },{
             headers:{
-
+                "Authorization" : localStorage.getItem("jwt")
             }
-        })
+        });
+
+        if(addQues.status===201){
+            console.log("Question Added");
+            navigate("/")
+        }
+
     }
 
     return (

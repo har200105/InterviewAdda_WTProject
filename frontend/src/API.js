@@ -1,2 +1,2 @@
 export const opporAPI = "https://applykiya.herokuapp.com" ;
-export const quesAPI  = "http://localhost:5000";
+export const quesAPI  = "https://interviewadda.herokuapp.com";

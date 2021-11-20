@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 * {
-  margin: 0;
-  padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -38,6 +36,10 @@ body {
   margin-left: 50px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+
+.logout:hover{
+  cursor: pointer !important;
 }
 
 .navMenu a:hover {
@@ -139,13 +141,24 @@ body {
 
 .list_top_questions{
   margin: 20px;
+  height: 150px;
+}
+
+.CircularProgressbar-path {
+  stroke: white;
+}
+
+.CircularProgressbar-trail {
+  stroke: gray;
 }
 
 .questions_box{
   width: 850px;
+  height: fit-content ;
   border: 3px solid burlywood;
   border-radius:20px;
-  padding: 20px;
+  padding: 20px !important;
+  /* padding-top: 20px !important; */
 }
 
 .question{
@@ -174,4 +187,15 @@ body {
   padding: 10px;
   border: 2px solid snow;
   color: whitesmoke;
+}
+
+.contributor__details{
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  margin-bottom: 15px;
+}
+.contributor__details p{
+  font-size: medium;
+  color: gray;
 }

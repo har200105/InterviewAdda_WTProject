@@ -33,6 +33,6 @@ const questionSchema = mongoose.Schema({
 
 
 
-const Questions = mongoose.model("question_records",questionSchema);
+const Questions = mongoose.model("questions",questionSchema);
 module.exports = Questions;
 

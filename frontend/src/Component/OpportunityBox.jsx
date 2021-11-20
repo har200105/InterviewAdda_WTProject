@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Question = ({p}) => {
+const OpportunityBox = ({p}) => {
     return (
         <div class="list_top_questions">
         <div class="questions_box">
@@ -13,4 +13,4 @@ const Question = ({p}) => {
     )
 }
 
-export default Question
+export default OpportunityBox
