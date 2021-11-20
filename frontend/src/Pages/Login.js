@@ -39,7 +39,6 @@ const Login = ({refresh}) => {
                     onSuccess={onLoginSuccess}
                     onFailure={onLoginFailure}
                     cookiePolicy={'single_host_origin'}
-                    isSignedIn={true}
                 />
                 {/* <GoogleLogout
                     buttonText="Logout"
